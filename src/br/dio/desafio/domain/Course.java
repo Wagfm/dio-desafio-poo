@@ -1,15 +1,18 @@
 package br.dio.desafio.domain;
 
 import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 
 @Getter
-@Setter
-@ToString
-public class Course {
-    private String title;
-    private String description;
-    private int hoursLoad;
+public class Course extends Content {
+    private final int hoursLoad;
 
+    public Course(String title, String description, int hoursLoad) {
+        super(title, description);
+        this.hoursLoad = hoursLoad;
+    }
+
+    @Override
+    public double calculateXP() {
+        return DEFAULT_XP * this.hoursLoad;
+    }
 }

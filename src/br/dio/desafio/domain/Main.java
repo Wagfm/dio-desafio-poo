@@ -1,11 +1,18 @@
 package br.dio.desafio.domain;
 
+import java.time.LocalDate;
+import java.util.Date;
+
 public class Main {
     public static void main(String[] args) {
-        Course myCourse = new Course();
-        myCourse.setTitle("Java #1");
-        myCourse.setDescription("Java basics");
-        myCourse.setHoursLoad(6);
-        System.out.println(myCourse);
+        Bootcamp bootcamp = new Bootcamp("Bootcamp Java Developer", "Development in Java");
+        bootcamp.getContents().add(new Course("Course A", "Basics", 6));
+        bootcamp.getContents().add(new Mentoring("Mentoring A", "Intro", LocalDate.now()));
+        Dev dev = new Dev("Wagner");
+        dev.enrollBootcamp(bootcamp);
+        dev.advance();
+        System.out.println("Enrolled contents" + dev.getEnrolledContents());
+        System.out.println("Enrolled contents" + dev.getFinishedContents());
+
     }
 }
